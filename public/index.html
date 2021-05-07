@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HInterior</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+        <style>
+            * { -khtml-user-select:none; margin:0; -moz-user-select:-moz-none; -ms-user-select:none; padding:0; user-select:none; -webkit-user-select:none;  }
+
+            header { align-items:center; display:flex; justify-content:space-between; margin:1%; padding:1%; }
+            header .header0, footer .title { font-family:'Monoton', cursive; }
+            a:link, a:hover, a:visited { color:black; text-decoration:none; }
+            h4 { background-color:black; color:white; padding:2.5%; text-align:center; }
+
+            .section input[id*="slide"] { display:none; }
+
+	        .section .slidewrap { margin:0 auto; max-width:100%; overflow:hidden; }
+
+	        .section .slidelist { font-size:10; white-space:nowrap; }
+	        .section .slidelist > li { display:inline-block; transition:all .5s; vertical-align:middle; width:100%; }
+	        .section .slidelist > li > a { display:block; overflow:hidden; position:relative; }
+	        .section .slidelist > li > a img { margin:0; padding:0; width:100%; }
+	        .section .slidelist label { cursor:pointer; padding:25%; position:absolute; top:50%; transform:translateY(-50%); z-index:1; }
+	        .section .slidelist .left { background:url('./images/left.png') left center / 25% no-repeat; left:-300px; }
+	        .section .slidelist .right { background:url('./images/right.png') right center / 25% no-repeat; right:-300px; }
+
+	        .section input[id="slide01"]:checked ~ .slidewrap .slidelist > li { transform:translateX(0%); }
+	        .section input[id="slide02"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-100.5%); }
+	        .section input[id="slide03"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-201.5%); }
+            .section input[id="slide04"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-302.5%); }
+            .section input[id="slide05"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-403%); }
+            .section input[id="slide06"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-503.5%); }
+            .section input[id="slide07"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-604.5%); }
+            .section input[id="slide08"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-705%); }
+            .section input[id="slide09"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-806%); }
+            .section input[id="slide10"]:checked ~ .slidewrap .slidelist > li { transform:translateX(-906.5%); }
+            .section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide04"]:checked ~ .slidewrap li:nth-child(4) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide04"]:checked ~ .slidewrap li:nth-child(4) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide05"]:checked ~ .slidewrap li:nth-child(5) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide05"]:checked ~ .slidewrap li:nth-child(5) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide06"]:checked ~ .slidewrap li:nth-child(6) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide06"]:checked ~ .slidewrap li:nth-child(6) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide07"]:checked ~ .slidewrap li:nth-child(7) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide07"]:checked ~ .slidewrap li:nth-child(7) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide08"]:checked ~ .slidewrap li:nth-child(8) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide08"]:checked ~ .slidewrap li:nth-child(8) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide09"]:checked ~ .slidewrap li:nth-child(9) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide09"]:checked ~ .slidewrap li:nth-child(9) .right {right:30px;transition:all .35s ease .5s; }
+            .section input[id="slide10"]:checked ~ .slidewrap li:nth-child(10) .left {left:30px;transition:all .35s ease .5s; }
+            .section input[id="slide10"]:checked ~ .slidewrap li:nth-child(10) .right {right:30px;transition:all .35s ease .5s; }
+
+            .contact .contactinformation { align-items:center; display:flex; justify-content:center; margin:2.5%; padding:2.5%; }
+            .contact .contactinformation .map { margin-right:1%; padding-right:1%; }
+            .contact .contactinformation .contactinformationtext { margin-left:1%; max-width:50%; padding-left:1%; }
+            .contact .contactinformation .contactinformationtext .contactinformationtexttitle { font-weight:bold; }
+            .contact .contactinformation .contactinformationtext .contactinformationtextcontent { text-indent:10px; }
+
+            .contact .notice { margin:2.5%; padding:2.5%; text-align:center; }
+            .contact form fieldset { line-height:25px; margin:2.5%; margin-bottom:1%; padding:2.5%; padding-bottom:1%; padding-inline-start:10%; text-align:left; }
+            .contact form .buttonwrap { margin:2.5%; margin-top:1%; padding:2.5%; text-align:center; }
+
+            footer { align-items:center; background-color:black; color:white; display:flex; justify-content:center; padding:2.5%; }
+        </style>
+
+        <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("input:radio[name=type]").click(function () {
+                    if ($("input[name=type]:checked").val() == 'etc') { $("input:text[name=etcexplanation]").attr("disabled", false); }
+                    else { $("input:text[name=etcexplanation]").attr("disabled", true); }
+                });
+
+                // 데이터를 추가합니다.
+                $('#consultationrequestform').submit(function (event) {
+                    // Ajax를 수행합니다.
+                    var data = $(this).serialize();
+                    $.post('/', data, selectData);
+                    // 기본 이벤트를 제거합니다.
+                    event.preventDefault();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="header0">
+                <h1><a href="index.html">HInterior</a></h1>
+            </div>
+            <div class="header1">
+                <a href="#consultationrequestsection">상담 신청하기</a>
+            </div>
+        </header>
+        <div class="section">
+            <h4>Project</h4>
+
+            <input type="radio" name="slide" id="slide01" checked>
+            <input type="radio" name="slide" id="slide02">
+            <input type="radio" name="slide" id="slide03">
+            <input type="radio" name="slide" id="slide04">
+            <input type="radio" name="slide" id="slide05">
+            <input type="radio" name="slide" id="slide06">
+            <input type="radio" name="slide" id="slide07">
+            <input type="radio" name="slide" id="slide08">
+            <input type="radio" name="slide" id="slide09">
+            <input type="radio" name="slide" id="slide10">
+
+            <div class="slidewrap">
+                <ul class="slidelist">
+                    <li>
+                        <a>
+                            <label for="slide10" class="left"></label>
+                            <img src="./images/project01.jpg" alt="Project01">
+                            <label for="slide02" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide01" class="left"></label>
+                            <img src="./images/project02.jpg" alt="Project02">
+                            <label for="slide03" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide02" class="left"></label>
+                            <img src="./images/project03.jpg" alt="Project03">
+                            <label for="slide04" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide03" class="left"></label>
+                            <img src="./images/project04.jpg" alt="Project04">
+                            <label for="slide05" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide04" class="left"></label>
+                            <img src="./images/project05.jpg" alt="Project05">
+                            <label for="slide06" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide05" class="left"></label>
+                            <img src="./images/project06.jpg" alt="Project06">
+                            <label for="slide07" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide06" class="left"></label>
+                            <img src="./images/project07.jpg" alt="Project07">
+                            <label for="slide08" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide07" class="left"></label>
+                            <img src="./images/project08.jpg" alt="Project08">
+                            <label for="slide09" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide08" class="left"></label>
+                            <img src="./images/project09.jpg" alt="Project09">
+                            <label for="slide10" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide09" class="left"></label>
+                            <img src="./images/project10.jpg" alt="Project10">
+                            <label for="slide01" class="right"></label>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="contact">
+            <h4>Contact</h4>
+
+            <div class="contactinformation">
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13044.13624362086!2d128.0940393!3d35.1807036!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb3f5c3b46dddf93e!2z6rK964Ko6rO87ZWZ6riw7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1600627606320!5m2!1sko!2skr" width="300" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="contactinformationtext">
+                    <span class="contactinformationtexttitle">Address</span><br>
+                    <p class="contactinformationtextcontent">경상남도 진주시 동진로 33 경남과학기술대학교</p>
+                    <p class="contactinformationtextcontent">GYEONG NAM NATIONAL UNIVERSITY OF SCIENCE AND TECHNOLGY. 150. CHIRAM-DONG. JINJU-SI. GYEONSANGNAM-DO. KOREA</p><br>
+                    <span class="contactinformationtexttitle">Tel</span><br>
+                    <p class="contactinformationtextcontent">+82 55-751-3114</p><br>
+                    <span class="contactinformationtexttitle">Fax</span><br>
+                    <p class="contactinformationtextcontent">+82 55-752-9554</p><br>
+                    <span class="contactinformationtexttitle">Email</span><br>
+                    <p class="contactinformationtextcontent">218124106@gntech.ac.kr</p>
+                </div>
+            </div>
+
+            <a id=consultationrequestsection></a>
+            <p class="notice">상담을 신청하시면 상담을 받기를 원하시는 날 <strong>하루 전</strong>에 고객님의 이메일로 프로젝트 계획들을 보내드리고 보내드린 것을 참고하면서 전화 상담이 이루어집니다.<br>
+            프로젝트 정보는 원하시는 디자인이 있다면 자세히 적어주시면 그에 맞게 디자인 계획이 이루어지며 원하시는 디자인이 없어도 상담을 통해 최고의 디자인을 추천해 드립니다.<br>
+            <span style="color:blue;font-weight:bold">12월 상담 신청은 마무리되었습니다. 1월부터 신청이 가능하며 오전 9시부터 오후 6시까지 상담이 이루어집니다.</span></p>
+            
+            <form id="consultationrequestform" method="post">
+                <fieldset>
+                    <legend>고객 정보</legend>
+                    성명 : <input type="text" name="customername" id="customername" size=10 placeholder="유하영" required/><br>
+                    전화번호 : <input type="tel" name="phonenumber1" id="phonenumber1" size=10 placeholder="010" pattern="[0-9]{2,3}" required/> - <input type="tel" name="phonenumber2" id="phonenumber2" size=10 placeholder="1234" pattern="[0-9]{3,4}" required/> - <input type="tel" name="phonenumber3" id="phonenumber3" size=10 placeholder="5678" pattern="[0-9]{4}" required/><br>
+                    이메일 : <input type="email" name="email" id="email" size=25 placeholder="218124106@gntech.ac.kr" required/><br>
+                </fieldset>
+                <fieldset>
+                    <legend>프로젝트 정보</legend>
+                    상담받을 날짜와 시간<br>
+                    <input type="date" name="date" id="date" min="2021-01-04" required/>
+                    <input type="time" name="time" id="time" min="09:00" max="18:00" required/><br><br>
+                    형태 : <input type="radio" name="type" id="residence" value="residence" required/>
+                    <label for="residence">주택</label>
+                    <input type="radio" name="type" id="office" value="office"/>
+                    <label for="office">사무실</label>
+                    <input type="radio" name="type" id="retail" value="retail"/>
+                    <label for="retail">가게</label>
+                    <input type="radio" name="type" id="etc" value="etc"/>
+                    <label for="etc">기타</label>
+                    <input type="text" name="etcexplanation" id="etcexplanation" size=10 placeholder="기타"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    내부 사진 : <input multiple="multiple" type="file" name="insideimage[]"/><br>
+                    면적 : <input type="number" name="area" id="area" min = 0 required/>
+                    <input type="radio" name="measure" id="py" value="py" required/>
+                    <label for="py">py</label>
+                    <input type="radio" name="measure" id="m2" value="m2"/>
+                    <label for="m2">m2</label><br>
+                    예산 : <input type="number" name="budget" id="budget" min = 0 required/> 원<br><br>
+                    원하는 디자인(없으면 생략) : <input multiple="multiple" type="file" name="designimage[]"/><br>
+                    상담 내용<br>
+                    <textarea name="commnet" rows="10" placeholder="창호, 발코니 확장, 도배 등과 같은 세부 시공 내역과 원하는 스타일, 특이 사항 또는 주의 사항을 적어주세요. 생략하셔도 무관합니다." style="width:75%;"></textarea>
+                </fieldset>
+
+                <div class=buttonwrap>
+                    <input type="reset" value="초기화" style="color:red; height:25px; margin-right:2.5%; width:100px;"/>
+                    <input type="submit" value="신청하기" style="color:blue; height:25px; margin-left:2.5%; width:100px;"/>
+                </div>
+            </form>
+        </div>
+        <footer>
+            <div class="title">
+                <h2>HInterior</h2>
+            </div>
+            <div class="copyright">
+                (c) 2020. HInterior Co. All Right Reserved.
+            </div>
+        </footer>
+    </body>
+</html>

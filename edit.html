@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HInterior 상담 신청 정보 수정</title>
+    </head>
+<body>
+  <h1>HInterior 상담 신청 정보 수정</h1>
+
+  <hr/>
+
+  <form method="post">
+    <fieldset>
+      <legend>고객 정보</legend>
+      <table>
+        <tr>
+            <td><label>아이디</label></td>
+            <td><input type="text" name="id" value="<%= data.id %>" disabled/></td>
+        </tr>
+        <tr>
+            <td><label>성명</label></td>
+            <td><input type="text" name="customername" value="<%= data.customername %>"/></td>
+        </tr>
+        <tr>
+            <td><label>전화번호</label></td>
+            <td><input type="text" name="phonenumber" value="<%= data.phonenumber %>"/></td>
+        </tr>
+        <tr>
+            <td><label>이메일</label></td>
+            <td><input type="text" name="email" value="<%= data.email %>"/></td>
+        </tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>프로젝트 정보</legend>
+      <table>
+        <tr>
+            <td><label>상담받을 날짜</label></td>
+            <td><input type="text" name="date" value="<%= data.date %>"/></td>
+        </tr>
+        <tr>
+            <td><label>상담받을 시간</label></td>
+            <td><input type="text" name="time" value="<%= data.time %>"/></td>
+        </tr>
+        <tr>
+            <td><label>형태</label></td>
+            <td><input type="text" name="type" value="<%= data.type %>"/></td>
+        </tr>
+        <tr>
+            <td><label>내부 사진</label></td>
+            <td><input multiple="multiple" type="file" name="insideimage[]" value="<%= data.insideimage %>"/></td>
+        </tr>
+        <tr>
+            <td><label>면적</label></td>
+            <td><input type="text" name="area" value="<%= data.area %>"/></td>
+        </tr>
+        <tr>
+            <td><label>예산</label></td>
+            <td><input type="text" name="budget" value="<%= data.budget %>"/></td>
+        </tr>
+        <tr>
+            <td><label>원하는 디자인</label></td>
+            <td><input multiple="multiple" type="file" name="designimage[]" value="<%= data.designimage %>"/></td>
+        </tr>
+        <tr>
+            <td><label>상담 내용</label></td>
+            <td><textarea name="commnet" value="<%= data.commnet %>" style="width:100%;"></textarea></td>
+        </tr>
+      </table>
+      </fieldset>
+    <div class=buttonwrap style="text-align:center;">
+        <input type="submit" value="수정하기" style="color:blue; height:25px; margin:5%; width:100px;"/>
+    </div>
+  </form>
+</body>
+</html>

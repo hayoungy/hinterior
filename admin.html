@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--<meta http-equiv="refresh" content="10">-->
+
+    <title>HInterior 상담 신청 목록</title>
+
+    <!--<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+      // 데이터를 추가합니다.
+      $('#phonenumber').submit(function (event) {
+        // Ajax를 수행합니다.
+        var data = $(this).serialize();
+        $.post('/admin/:phonenumber', data, selectData);
+        // 기본 이벤트를 제거합니다.
+        event.preventDefault();
+      });
+    </script>-->
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>HInterior 상담 신청 목록</h1>
+        </td>
+        <td>
+          <input type="text" name="phonenumber" id="phonenumber" size="25"/>
+          <input type="submit" value="찾기"/>
+        </td>
+      </tr>
+    </table>
+    <hr/>
+
+    <table width="100%" border="1">
+      <tr>
+        <th>아이디</th><th>성명</th><th>전화번호</th><th>이메일</th><th></th><th></th>
+      </tr>
+      <% data.forEach(function (item, index) { %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.customername %></td>
+          <td><%= item.phonenumber %></td>
+          <td><%= item.email %></td>
+          <td><a href="/admin/edit/<%= item.id %>">수정</a></td>
+          <td><a href="/admin/delete/<%= item.id %>">삭제</a></td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <details>
+              <summary>프로젝트 정보</summary>
+              <textarea row="10" style = "width:100%;">상담받을 날짜와 시간 : <%= item.date %> <%= item.time %>
+형태 : <%= item.type %>
+내부 사진 : <%= item.insideimage %>
+면적 : <%= item.area %>
+예산 : <%= item.budget %>
+원하는 디자인 : <%= item.designimage %>
+상담 내용 : <%= item.commnet %></textarea>
+            </details>
+          </td>
+        </tr>
+      <% }); %>
+    </table>
+  </body>
+</html>
